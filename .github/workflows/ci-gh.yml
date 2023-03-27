@@ -4,7 +4,7 @@ on:
     branches-ignore:
         - gh-pages  # deployment target branch (this workflow should not exist on that branch anyway)
   push:
-    branches-ignore:
+  branches-ignore:
       - gh-pages  # deployment target branch (this workflow should not exist on that branch anyway)
   pull_request:
     branches-ignore:
@@ -20,7 +20,6 @@ env:
   PYTHONUNBUFFERED: 1
 jobs:
   build:
-    if: ${{ github.repository == 'nv-legate/legate.core' }}
     runs-on: ubuntu-latest
     steps:
       - name: Dump GitHub context
