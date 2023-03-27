@@ -73,8 +73,7 @@ jobs:
           tar -cvjSf legate.core.docs.tar.bz2 *
       
       - name: Upload documentation
-        working-directory: ./docs/legate/core/build/singlehtml
         uses: actions/upload-artifact@v3
         with:
           name: upload-docs
-          path: .legate.core.docs.tar.bz2
+          path: $GITHUB_WORKSPACE/docs/legate/core/build/singlehtml/legate.core.docs.tar.bz2
