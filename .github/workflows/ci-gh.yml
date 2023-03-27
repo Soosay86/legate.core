@@ -71,5 +71,5 @@ jobs:
       - name: Upload documentation
         uses: actions/upload-artifact@v3
         with:
-          name: upload-docs
+          name: legate-core-docs
           path: $GITHUB_WORKSPACE/docs/legate/core/build/singlehtml/legate.core.docs.tar.bz2
