@@ -58,10 +58,6 @@ jobs:
         run: |
           conda run -n legate /bin/bash -c $GITHUB_WORKSPACE/install.py --docs
       
-      - name: Build documentation through install.py
-        run: |
-          conda run -n legate /bin/bash -c $GITHUB_WORKSPACE/install.py --docs
-      
       - name: Build documentation using Makefile
         working-directory: ./docs/legate/core
         run: |
