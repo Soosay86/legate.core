@@ -63,7 +63,7 @@ jobs:
       
       - name: Build doxygen documentation through install.py
         run: |
-          conda run -n legate /bin/bash -c "$GITHUB_WORKSPACE/install.py --docs"
+          conda run -n legate /bin/bash -c "$GITHUB_WORKSPACE/install.py --march=nocona --docs"
       
       - name: Build documentation using Makefile
         working-directory: ./docs/legate/core
