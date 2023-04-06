@@ -32,4 +32,4 @@ conda env list
 echo "Make sure pynvml is installed:"
 python -c "import pynvml"
 
-$BASE_DIR/install.py --cuda --march=nocona
+# $BASE_DIR/install.py --cuda

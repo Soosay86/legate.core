@@ -58,4 +58,5 @@ jobs:
         with:
           # imageName: ghcr.io/nvlegate/example-devcontainer
           # cacheFrom: ghcr.io/example/example-devcontainer
-          runCmd: scripts/devcontainer-post-create.sh
+          # push: always
+          runCmd: ./install.py --cuda
