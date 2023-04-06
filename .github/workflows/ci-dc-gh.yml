@@ -18,8 +18,8 @@ env:
   PYTHONUNBUFFERED: 1
 jobs:
   build:
-    # runs-on: ubuntu-latest
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
+    # runs-on: self-hosted
     steps:
       - name: Dump GitHub context
         env:
@@ -56,4 +56,6 @@ jobs:
       - name: Build and run dev container task
         uses: devcontainers/ci@v0.3
         with:
+          # imageName: ghcr.io/nvlegate/example-devcontainer
+          # cacheFrom: ghcr.io/example/example-devcontainer
           runCmd: scripts/devcontainer-post-create.sh
