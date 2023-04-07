@@ -1,6 +1,8 @@
 FROM nvidia/cuda:11.8.0-devel-ubuntu22.04 as llr_base
 
-RUN apt-get update && apt-get -y install tree && tree
+RUN apt-get update \
+&& apt-get -y install tree \
+&& tree
 
 # RUN apt-get update && apt-get -y install cmake git rust-all wget
 
