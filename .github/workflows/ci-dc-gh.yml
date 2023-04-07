@@ -56,7 +56,7 @@ jobs:
       - name: Build and run dev container task
         uses: devcontainers/ci@v0.3
         with:
-          # imageName: ghcr.io/nvlegate/example-devcontainer
-          # cacheFrom: ghcr.io/example/example-devcontainer
-          # push: always
+          imageName: ghcr.io/nv-legate/legate.core
+          cacheFrom: ghcr.io/nv-legate/legate.core
+          push: always
           runCmd: ./install.py --cuda
