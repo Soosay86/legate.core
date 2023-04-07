@@ -7,10 +7,14 @@
     "build": {
         // Path that the Docker build should be run from relative to devcontainer.json.
         "context": "..",
-        // Path is relataive to the devcontainer.json file.
+        // Path is relative to the devcontainer.json file.
         "dockerfile": "Dockerfile"
     },
 
+    "mounts" : [
+        "source=${localWorkspaceFolder},target=${containerWorkspaceFolder},type=bind,consistency=consistent"
+    ]
+
     // Use 'postCreateCommand' to run commands after the container is created.
-    "updateContentCommand": "bash scripts/devcontainer-update-content.sh"
+    // "updateContentCommand": "bash scripts/devcontainer-update-content.sh"
 }
