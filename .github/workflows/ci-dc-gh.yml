@@ -75,4 +75,5 @@ jobs:
         with:
           cacheFrom: ghcr.io/nv-legate/legate.core.devcontainer
           push: never
-          runCmd: ./install.py --cuda
+          # runCmd: ./install.py --cuda
+          runCmd: tree
