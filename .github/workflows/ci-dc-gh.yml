@@ -18,8 +18,8 @@ env:
   PYTHONUNBUFFERED: 1
 jobs:
   build:
-    # runs-on: ubuntu-latest
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
+    # runs-on: self-hosted
     permissions:
       packages: write
 
@@ -75,5 +75,4 @@ jobs:
         with:
           cacheFrom: ghcr.io/nv-legate/legate.core.devcontainer
           push: never
-          # runCmd: ./install.py --cuda
-          runCmd: tree
+          runCmd: ./install.py --cuda
