@@ -59,7 +59,7 @@ jobs:
         uses: actions/cache@v3
         id: pkgcache
         with:
-          path: ${{ env.CONDA }}/pkgs
+          path: $CONDA/pkgs
           key: ${{ runner.os }}-${{ hashFiles('environment-test-linux-py3.10-cuda11.8-compilers-openmpi.yaml') }}
 
       - name: Install dependencies from generated YAML file if the conda cache does not exist.
@@ -70,7 +70,7 @@ jobs:
         uses: actions/cache@v3
         if: steps.pkgcache.outputs.cache-hit != 'true'
         with:
-          path: ${{ env.CONDA }}/pkgs
+          path: $CONDA/pkgs
           key: ${{ runner.os }}-${{ hashFiles('environment-test-linux-py3.10-cuda11.8-compilers-openmpi.yaml') }}
 
       - name: Build doxygen documentation through install.py
