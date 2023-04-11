@@ -67,6 +67,11 @@ jobs:
         run: |
           conda run -n legate /bin/bash -c "make html"
 
+      - name: Run link checker
+        working-directory: ./docs/legate/core
+        run: |
+          conda run -n legate /bin/bash -c "make linkcheck"
+
       - name: Upload documentation
         uses: actions/upload-artifact@v3
         with:
