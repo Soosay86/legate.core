@@ -68,13 +68,6 @@ jobs:
         if: steps.pkgcache.outputs.cache-hit != 'true'
         run: conda env create -n legate -f environment-test-linux-py3.10-cuda11.8-compilers-openmpi.yaml
 
-      - name: Create the conda cache if it does not exist already.
-        uses: actions/cache@v3
-        if: steps.pkgcache.outputs.cache-hit != 'true'
-        with:
-          path: ${{ env.CONDA }}/pkgs
-          key: ${{ runner.os }}-${{ hashFiles('environment-test-linux-py3.10-cuda11.8-compilers-openmpi.yaml') }}
-
       - name: Build doxygen documentation through install.py
         run: |
           conda run -n legate /bin/bash -c "./install.py --docs"
