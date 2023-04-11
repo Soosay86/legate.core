@@ -16,6 +16,7 @@ env:
   REPO_URL: ${{ github.event.pull_request.head.repo.html_url || github.event.repository.html_url }}
   # Prevent output buffering
   PYTHONUNBUFFERED: 1
+  IMAGE_NAME: ghcr.io/sandeepd-nv/legate.core.devcontainer.${{github.ref_name}}
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -66,13 +67,15 @@ jobs:
       - name: Pre-build dev container image
         uses: devcontainers/ci@v0.3
         with:
-          imageName: ghcr.io/sandeepd-nv/legate.core.devcontainer
-          cacheFrom: ghcr.io/sandeepd-nv/legate.core.devcontainer
+          imageName: $IMAGE_NAME
+          cacheFrom: $IMAGE_NAME
           push: always
 
       - name: Build legate.core
         uses: devcontainers/ci@v0.3
         with:
-          cacheFrom: ghcr.io/nv-legate/legate.core.devcontainer
-          push: never
+          imageName: $IMAGE_NAME
+          cacheFrom: $IMAGE_NAME
+          push: filter
+          eventFilterForPush: push
           runCmd: ./install.py --cuda
