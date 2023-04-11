@@ -67,15 +67,15 @@ jobs:
       - name: Pre-build dev container image
         uses: devcontainers/ci@v0.3
         with:
-          imageName: $IMAGE_NAME
-          cacheFrom: $IMAGE_NAME
+          imageName: ${{ env.$IMAGE_NAME }}
+          cacheFrom: ${{ env.$IMAGE_NAME }}
           push: always
 
       - name: Build legate.core
         uses: devcontainers/ci@v0.3
         with:
-          imageName: $IMAGE_NAME
-          cacheFrom: $IMAGE_NAME
+          imageName: ${{ env.$IMAGE_NAME }}
+          cacheFrom: ${{ env.$IMAGE_NAME }}
           push: filter
           eventFilterForPush: push
           runCmd: ./install.py --cuda
