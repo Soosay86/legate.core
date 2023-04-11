@@ -16,6 +16,8 @@ env:
   REPO_URL: ${{ github.event.pull_request.head.repo.html_url || github.event.repository.html_url }}
   # Prevent output buffering
   PYTHONUNBUFFERED: 1
+  # This should have been set by the ubuntu-latest image but it isn't.
+  CONDA: /usr/share/miniconda
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -59,7 +61,7 @@ jobs:
         uses: actions/cache@v3
         id: pkgcache
         with:
-          path: $CONDA/pkgs
+          path: ${{ env.CONDA }}/pkgs
           key: ${{ runner.os }}-${{ hashFiles('environment-test-linux-py3.10-cuda11.8-compilers-openmpi.yaml') }}
 
       - name: Install dependencies from generated YAML file if the conda cache does not exist.
@@ -70,7 +72,7 @@ jobs:
         uses: actions/cache@v3
         if: steps.pkgcache.outputs.cache-hit != 'true'
         with:
-          path: $CONDA/pkgs
+          path: ${{ env.CONDA }}/pkgs
           key: ${{ runner.os }}-${{ hashFiles('environment-test-linux-py3.10-cuda11.8-compilers-openmpi.yaml') }}
 
       - name: Build doxygen documentation through install.py
